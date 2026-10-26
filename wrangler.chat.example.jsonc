@@ -1,0 +1,114 @@
+{
+  "name": "whats-assistant",
+  "main": "src/chat-recovery-v1/worker.js",
+  "account_id": "YOUR_CLOUDFLARE_ACCOUNT_ID",
+  "compatibility_date": "2026-10-11",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "workers_dev": true,
+  "preview_urls": false,
+  "vars": {
+    "META_PHONE_NUMBER_ID": "YOUR_META_PHONE_NUMBER_ID",
+    "META_WABA_ID": "YOUR_META_WABA_ID",
+    "SUPABASE_URL": "https://YOUR_PROJECT.supabase.co",
+    "SUPABASE_BUCKET": "whats-files",
+    "MAX_MEDIA_BYTES": 52428800,
+    "MAX_EXTRACTION_BYTES": 8388608,
+    "ASSISTANT_ENABLED": "true",
+    "CHAT_CHOICES_ENABLED": "true",
+    "CHAT_TYPING_ENABLED": "true",
+    "CHAT_AI_SIGNAL_ENABLED": "true",
+    "AI_ROUTER_MODEL": "@cf/cloudflare/clef",
+    "ASSISTANT_MODEL": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "VOICE_NOTE_ASSISTANT_ENABLED": "true",
+    "IMAGE_UNDERSTANDING_ENABLED": "true",
+    "CALL_BRIDGE_ENABLED": "true",
+    "CALL_BRIDGE_BACKEND": "livekit",
+    "LIVEKIT_URL": "wss://YOUR_PROJECT.livekit.cloud",
+    "VOICE_CALL_TOOLS_ENABLED": "true",
+    "CALL_RECORDING_ENABLED": "false",
+    "SCHEDULER_ENABLED": "false",
+    "ALLOWED_SENDERS": "[]",
+    "CHAT_REPLY_MODEL": "@cf/mistralai/mistral-small-3.1-24b-instruct",
+    "CHAT_PROVIDER_ORDER": "workers-ai",
+    "CALL_ARCHIVE_ENABLED": "true",
+    "CALL_SUMMARY_ENABLED": "true",
+    "CALL_SUMMARY_MODEL": "@cf/mistralai/mistral-small-3.1-24b-instruct",
+    "CALL_SUMMARY_REVIEW_MODEL": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "CALL_SUMMARY_DAILY_MODEL_REQUESTS": "16",
+    "MEMORY_ENABLED": "false",
+    "MEMORY_SHADOW_ENABLED": "false",
+    "MEMORY_VOICE_SHADOW_ENABLED": "false",
+    "MEMORY_VOICE_TOOLS_ENABLED": "false",
+    "MEMORY_HISTORY_ENABLED": "false",
+    "MEMORY_EPISODES_ENABLED": "false",
+    "EVIDENCE_ENABLED": "false",
+    "EVIDENCE_INGEST_ENABLED": "false",
+    "MEMORY_RETENTION_ENABLED": "false",
+    "RAG_ENABLED": "true",
+    "RAG_ANSWER_MODEL": "@cf/mistralai/mistral-small-3.1-24b-instruct",
+    "RAG_REVIEW_MODEL": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "RAG_DAILY_MODEL_REQUESTS": "8192",
+    "RAG_FAISS_URL": "https://YOUR_NATIVE_PDF_HOST/",
+    "RAG_DAILY_BACKGROUND_REQUESTS": "8160",
+    "RAG_REVIEW_ENABLED": "false",
+    "RAG_REBUILD_STAGE": "single_answer",
+    "RAG_FOLLOWUPS_ENABLED": "true",
+    "RAG_PRONOUN_FOLLOWUPS_ENABLED": "true",
+    "RAG_SEMANTIC_ENABLED": "true",
+    "RAG_HYBRID_ENABLED": "true",
+    "RAG_WHOLE_SUMMARY_ENABLED": "true",
+    "RAG_PDF_INDEXING_ENABLED": "true",
+    "RAG_PDF_BATCHES_ENABLED": "true",
+    "RAG_PDF_FAST_ENABLED": "true",
+    "RAG_PDF_PUBLICATION_RESUME_ENABLED": "true"
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1,
+    "logs": {
+      "invocation_logs": false
+    }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "whats-phase0-db",
+      "database_id": "YOUR_D1_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MEDIA_RECOVERY",
+        "class_name": "MediaRecovery"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "media-recovery-v1",
+      "new_sqlite_classes": [
+        "MediaRecovery"
+      ]
+    }
+  ],
+  "vectorize": [
+    {
+      "binding": "FILES",
+      "index_name": "whats-phase0-files"
+    },
+    {
+      "binding": "RAG_VECTORS",
+      "index_name": "whats-rag-v1-multilingual"
+    }
+  ],
+  "triggers": {
+    "crons": []
+  },
+  "ai": {
+    "binding": "AI"
+  }
+}

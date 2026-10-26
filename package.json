@@ -1,0 +1,23 @@
+{
+  "name": "whats-assistant",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "wrangler dev -c wrangler.chat.jsonc",
+    "test": "node --test tests/",
+    "build": "wrangler deploy --dry-run --outdir .wrangler/build -c wrangler.chat.jsonc",
+    "types": "wrangler types -c wrangler.chat.jsonc",
+    "deploy": "wrangler deploy -c wrangler.chat.jsonc",
+    "db:migrate:local": "wrangler d1 migrations apply whats-phase0-db --local -c wrangler.chat.jsonc",
+    "db:migrate:remote": "wrangler d1 migrations apply whats-phase0-db --remote -c wrangler.chat.jsonc",
+    "test:livekit": "python -m unittest discover -s agents/livekit -p test_agent.py",
+    "verify:conversation": "python bridge/live_status.py"
+  },
+  "devDependencies": {
+    "miniflare": "5.20261006.1-alpha",
+    "wrangler": "4.149.0"
+  }
+}

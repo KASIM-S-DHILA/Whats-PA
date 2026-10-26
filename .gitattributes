@@ -1,0 +1,12 @@
+* text=auto eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.py text eol=lf
+*.sql text eol=lf
+*.json text eol=lf
+*.jsonc text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.yaml text eol=lf
+Dockerfile text eol=lf
+aws-asm-exec text eol=lf

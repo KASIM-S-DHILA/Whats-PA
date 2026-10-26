@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: whats-faiss
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: RAG_INDEX_SECRET
+        sync: false
+
+
+      - key: WORKER_BASE_URL
+        sync: false

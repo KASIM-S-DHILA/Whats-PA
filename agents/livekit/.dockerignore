@@ -1,0 +1,10 @@
+*
+!Dockerfile
+!pyproject.toml
+!uv.lock
+!agent.py
+!voice_tools.py
+
+!call_archive.py
+
+!worker_endpoint.py

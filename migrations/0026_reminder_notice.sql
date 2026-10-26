@@ -1,0 +1,1 @@
+ALTER TABLE reminders ADD COLUMN notified_at INTEGER NOT NULL DEFAULT 0;
