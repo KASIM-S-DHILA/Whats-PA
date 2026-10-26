@@ -17,7 +17,7 @@ Export-only portability changes:
 - Local/account-specific READMEs are replaced with setup notes grounded in the copied source.
 - Redundant blank lines at the end of source files are trimmed in the export; Git normalizes text line endings to LF.
 
-These portability changes are local to this export. They have not been deployed or qualified by live application tests. Public source templates intentionally contain no credentials, recipient list or production callback target.
+These portability changes are local to this export. They have not been deployed or qualified by live application tests. Tracked source templates intentionally contain no credentials, recipient list or production callback target.
 
 Preparation checks passed: JavaScript syntax, Python AST parsing without imports, source-copy SHA256 comparison and a Wrangler dry build using placeholder configuration. The export was scanned for known live identifiers and common credential patterns with no matches. These checks do not guarantee that every possible sensitive value is detectable. Historical application suites and live integrations were not exercised.
 

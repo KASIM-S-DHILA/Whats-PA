@@ -1,6 +1,6 @@
 # Project instructions
 
-Authoritative project: `C:\Users\User\OneDrive\Desktop\whats`.
+Authoritative project: this checkout.
 
 Read [AGENT_HANDOFF.md](AGENT_HANDOFF.md) before continuing memory/RAG work. It records current code and evidence, remaining milestones and user decisions. Keep new work and reproducible evidence in this project. Preserve frozen campaign sources/results, corpus labels and private budget ledgers. Distinguish authored controls, actual inference and production behavior. Never publish credentials or private reasoning. Keep `.dev.vars`, actual Wrangler/LiveKit configuration, evidence and private operational docs in ignored local paths. The memory lane remains isolated until qualification gates pass.
 

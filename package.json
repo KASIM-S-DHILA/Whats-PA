@@ -1,14 +1,18 @@
 {
   "name": "whats-assistant",
+  "description": "Private, owner-scoped WhatsApp file, PDF, reminder and voice assistant on Cloudflare Workers.",
   "private": true,
   "type": "module",
+  "license": "SEE LICENSE IN LICENSE",
+  "author": "Kasim Dhila",
   "engines": {
     "node": ">=22"
   },
   "scripts": {
     "dev": "wrangler dev -c wrangler.chat.jsonc",
-    "test": "node --test tests/",
+    "test": "node --test tests/current.test.mjs",
     "build": "wrangler deploy --dry-run --outdir .wrangler/build -c wrangler.chat.jsonc",
+    "build:example": "wrangler deploy --dry-run --outdir .wrangler/example-build -c wrangler.chat.example.jsonc",
     "types": "wrangler types -c wrangler.chat.jsonc",
     "deploy": "wrangler deploy -c wrangler.chat.jsonc",
     "db:migrate:local": "wrangler d1 migrations apply whats-phase0-db --local -c wrangler.chat.jsonc",
